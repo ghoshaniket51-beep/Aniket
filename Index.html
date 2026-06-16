@@ -4,469 +4,77 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aniket Ghosh | Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --navy:    #0d1b2a;
-    --slate:   #1c2e40;
-    --gold:    #c9a84c;
-    --gold-lt: #e8c97a;
-    --cream:   #f5f0e8;
-    --mist:    #dde4ec;
-    --ink:     #1a1a2e;
-    --mid:     #6b7a8d;
-    --white:   #ffffff;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 18px 48px;
-    background: rgba(13,27,42,0.92);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem; font-weight: 600;
-    color: var(--gold); letter-spacing: 0.08em;
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--mist); text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: var(--navy);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 120px 48px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(201,168,76,0.04) 60px),
-      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(201,168,76,0.04) 60px);
-  }
-  .hero-text { position: relative; z-index: 2; }
-  .hero-eyebrow {
-    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .hero-eyebrow::before {
-    content: ''; display: block;
-    width: 36px; height: 1px; background: var(--gold);
-  }
-  .hero-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 7vw, 6rem);
-    font-weight: 300; line-height: 1.05;
-    color: var(--white); letter-spacing: -0.01em;
-    margin-bottom: 28px;
-  }
-  .hero-name span { color: var(--gold); font-weight: 600; }
-  .hero-desc {
-    font-size: 1rem; font-weight: 300; line-height: 1.75;
-    color: var(--mist); max-width: 480px; margin-bottom: 40px;
-  }
-  .hero-cta {
-    display: inline-block; padding: 13px 32px;
-    border: 1px solid var(--gold); color: var(--gold);
-    font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase;
-    text-decoration: none; transition: all 0.25s;
-  }
-  .hero-cta:hover { background: var(--gold); color: var(--navy); }
-
-  .hero-stat-grid {
-    position: relative; z-index: 2;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2px; padding-left: 60px;
-  }
-  .stat-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(201,168,76,0.12);
-    padding: 32px 28px;
-    transition: background 0.25s;
-  }
-  .stat-card:hover { background: rgba(201,168,76,0.06); }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem; font-weight: 600; color: var(--gold);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--mid); margin-top: 8px;
-  }
-
-  /* ── SECTIONS ── */
-  .section {
-    max-width: 1000px; margin: 0 auto; padding: 90px 32px;
-  }
-  .section-label {
-    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--gold);
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 48px;
-  }
-  .section-label::after {
-    content: ''; flex: 1; height: 1px;
-    background: linear-gradient(to right, rgba(201,168,76,0.3), transparent);
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
-    line-height: 1.15; color: var(--ink); margin-bottom: 24px;
-  }
-  .section-body {
-    font-size: 1rem; font-weight: 300; line-height: 1.85;
-    color: #3d4a5c; max-width: 680px;
-  }
-
-  /* ── ABOUT SPLIT ── */
-  .about-grid {
-    display: grid; grid-template-columns: 3fr 2fr; gap: 64px; align-items: start;
-  }
-  .about-detail-card {
-    background: var(--navy);
-    padding: 36px; border-left: 3px solid var(--gold);
-  }
-  .detail-row {
-    display: flex; flex-direction: column; gap: 4px;
-    padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-  .detail-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .detail-key {
-    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--gold); font-weight: 500;
-  }
-  .detail-val { font-size: 0.9rem; color: var(--mist); font-weight: 300; }
-
-  /* ── JOURNEY TIMELINE ── */
-  .journey-section { background: var(--navy); }
-  .journey-inner { max-width: 1000px; margin: 0 auto; padding: 90px 32px; }
-  .journey-inner .section-title { color: var(--white); }
-  .timeline {
-    position: relative; margin-top: 56px;
-    padding-left: 28px;
-    border-left: 1px solid rgba(201,168,76,0.25);
-  }
-  .timeline-item {
-    position: relative; padding: 0 0 48px 36px;
-  }
-  .timeline-item:last-child { padding-bottom: 0; }
-  .timeline-dot {
-    position: absolute; left: -7px; top: 6px;
-    width: 13px; height: 13px;
-    border: 2px solid var(--gold); background: var(--navy);
-    border-radius: 50%;
-  }
-  .timeline-item.highlight .timeline-dot {
-    background: var(--gold);
-  }
-  .timeline-year {
-    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--gold); font-weight: 500; margin-bottom: 6px;
-  }
-  .timeline-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem; font-weight: 400; color: var(--white); margin-bottom: 8px;
-  }
-  .timeline-sub { font-size: 0.88rem; color: var(--mid); font-weight: 300; line-height: 1.6; }
-  .timeline-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-  .tag {
-    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 4px 12px; border: 1px solid rgba(201,168,76,0.3);
-    color: var(--gold); font-weight: 500;
-  }
-
-  /* ── SKILLS ── */
-  .skills-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 8px;
-  }
-  .skill-block {
-    background: var(--white);
-    border: 1px solid var(--mist);
-    padding: 28px 24px;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .skill-block:hover { border-color: var(--gold); transform: translateY(-3px); }
-  .skill-icon { font-size: 1.4rem; margin-bottom: 12px; }
-  .skill-name {
-    font-size: 0.88rem; font-weight: 500; color: var(--ink); margin-bottom: 6px;
-  }
-  .skill-desc { font-size: 0.78rem; color: var(--mid); line-height: 1.6; }
-
-  /* ── VISION ── */
-  .vision-section {
-    background: linear-gradient(135deg, var(--navy) 0%, #102236 100%);
-    position: relative; overflow: hidden;
-  }
-  .vision-section::after {
-    content: 'VISION';
-    position: absolute; right: -20px; top: 50%; transform: translateY(-50%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18vw; font-weight: 600; color: rgba(201,168,76,0.03);
-    line-height: 1; pointer-events: none; white-space: nowrap;
-  }
-  .vision-section .section-label { margin-bottom: 32px; }
-  .vision-section .section-title { color: var(--white); }
-  .vision-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 300;
-    line-height: 1.6; color: var(--mist);
-    max-width: 780px; border-left: 3px solid var(--gold); padding-left: 28px;
-    margin-top: 32px;
-  }
-
-  /* ── HOBBIES ── */
-  .hobbies-row {
-    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px;
-  }
-  .hobby-pill {
-    display: flex; align-items: center; gap: 10px;
-    padding: 14px 22px;
-    background: var(--white); border: 1px solid var(--mist);
-    font-size: 0.85rem; font-weight: 400; color: var(--ink);
-    transition: border-color 0.2s;
-  }
-  .hobby-pill:hover { border-color: var(--gold); }
-  .hobby-pill span { font-size: 1.1rem; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--ink);
-    padding: 40px 48px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .footer-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem; font-weight: 400; color: var(--gold);
-  }
-  .footer-note { font-size: 0.75rem; color: var(--mid); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
-    .hero-stat-grid { padding-left: 0; margin-top: 48px; }
-    .about-grid { grid-template-columns: 1fr; gap: 32px; }
-    .skills-grid { grid-template-columns: 1fr 1fr; }
-    footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
-  }
+body{font-family:Arial,sans-serif;margin:0;padding:0;line-height:1.6;background:#f4f4f4;}
+header{background:#222;color:white;padding:40px;text-align:center;}
+section{max-width:900px;margin:20px auto;background:white;padding:25px;border-radius:10px;}
+h2{color:#333;border-bottom:2px solid #ddd;padding-bottom:5px;}
+ul{padding-left:20px;}
+footer{text-align:center;padding:20px;background:#222;color:white;}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#">A·G</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#journey">Journey</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#vision">Vision</a></li>
-  </ul>
-</nav>
+<header>
+<h1>Aniket Ghosh</h1>
+<p>MBA-BM Student at XIMB | St. Xavier's College, Kolkata Alumnus</p>
+</header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-text">
-    <p class="hero-eyebrow">MBA · Finance · Strategy</p>
-    <h1 class="hero-name">Aniket<br><span>Ghosh</span></h1>
-    <p class="hero-desc">MBA-BM student at XIMB · Chemistry graduate from St. Xavier's College, Kolkata · Aspiring to build a career at the intersection of finance and strategic leadership.</p>
-    <a class="hero-cta" href="#about">Explore Profile</a>
-  </div>
-
-  <div class="hero-stat-grid">
-    <div class="stat-card">
-      <div class="stat-num">6+</div>
-      <div class="stat-label">IIM & IMT Conversions</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">XIMB</div>
-      <div class="stat-label">Current Institution</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">B.Sc.</div>
-      <div class="stat-label">Chemistry, St. Xavier's</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">BM</div>
-      <div class="stat-label">Business Management</div>
-    </div>
-  </div>
+<section>
+<h2>About Me</h2>
+<p>Hello! I am Aniket Ghosh, a motivated and ambitious management student with a strong academic foundation in Chemistry and a growing passion for business, finance, and management. After completing my graduation from St. Xavier's College, Kolkata, I successfully converted XIMB BM along with IIM Bodh Gaya, IIM Sirmaur, IIM Jammu, IMT Ghaziabad, IMT Hyderabad, and IMT Nagpur. My goal is to build a successful career in the finance domain while continuously developing my leadership and analytical skills.</p>
 </section>
 
-<!-- ABOUT -->
-<div id="about">
-  <div class="section">
-    <p class="section-label">About Me</p>
-    <div class="about-grid">
-      <div>
-        <h2 class="section-title">Science foundation.<br>Business ambition.</h2>
-        <p class="section-body">Hello! I am Aniket Ghosh — a motivated and ambitious management student with a strong academic foundation in Chemistry and a growing passion for business, finance, and management. After completing my graduation from St. Xavier's College, Kolkata, I successfully converted XIMB BM alongside IIM Bodh Gaya, IIM Sirmaur, IIM Jammu, IMT Ghaziabad, IMT Hyderabad, and IMT Nagpur. My goal is to build a meaningful career in the finance domain while continuously honing my leadership and analytical capabilities.</p>
-      </div>
-      <div class="about-detail-card">
-        <div class="detail-row">
-          <span class="detail-key">Hometown</span>
-          <span class="detail-val">Raiganj, West Bengal</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-key">Undergraduate</span>
-          <span class="detail-val">B.Sc. Chemistry, St. Xavier's College, Kolkata</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-key">Postgraduate</span>
-          <span class="detail-val">MBA-BM, XIMB (Xavier Institute of Management)</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-key">Focus Area</span>
-          <span class="detail-val">Finance & Business Leadership</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<section>
+<h2>Background</h2>
+<ul>
+<li>Hometown: Raiganj, West Bengal</li>
+<li>B.Sc. in Chemistry – St. Xavier's College, Kolkata</li>
+<li>MBA in Business Management (BM) – XIMB</li>
+<li>Career Aspiration: Finance and Business Leadership</li>
+</ul>
+</section>
 
-<!-- JOURNEY -->
-<div class="journey-section" id="journey">
-  <div class="journey-inner">
-    <p class="section-label" style="color:var(--gold);">Academic Journey</p>
-    <h2 class="section-title">From molecules<br>to markets.</h2>
-    <div class="timeline">
+<section>
+<h2>Skills</h2>
+<ul>
+<li>Analytical Thinking</li>
+<li>Problem Solving</li>
+<li>Communication Skills</li>
+<li>Teamwork & Collaboration</li>
+<li>Leadership Potential</li>
+<li>Microsoft Excel</li>
+<li>Learning Power BI</li>
+<li>Business & Financial Analysis</li>
+</ul>
+</section>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <p class="timeline-year">Foundation</p>
-        <h3 class="timeline-heading">B.Sc. in Chemistry</h3>
-        <p class="timeline-sub">St. Xavier's College, Kolkata — One of India's most prestigious undergraduate institutions, building analytical rigour and a disciplined problem-solving mindset.</p>
-      </div>
+<section>
+<h2>Hobbies & Interests</h2>
+<ul>
+<li>Gaming (especially Valorant)</li>
+<li>Badminton</li>
+<li>Biking and exploring new places</li>
+<li>Following business and finance trends</li>
+</ul>
+</section>
 
-      <div class="timeline-item highlight">
-        <div class="timeline-dot"></div>
-        <p class="timeline-year">Entrance Success</p>
-        <h3 class="timeline-heading">Multiple IIM & IMT Conversions</h3>
-        <p class="timeline-sub">Cracked competitive CAT-based admissions to secure offers from leading Indian management institutions.</p>
-        <div class="timeline-tags">
-          <span class="tag">IIM Bodh Gaya</span>
-          <span class="tag">IIM Sirmaur</span>
-          <span class="tag">IIM Jammu</span>
-          <span class="tag">IMT Ghaziabad</span>
-          <span class="tag">IMT Hyderabad</span>
-          <span class="tag">IMT Nagpur</span>
-        </div>
-      </div>
+<section>
+<h2>Achievements</h2>
+<ul>
+<li>Converted MBA-BM at XIMB</li>
+<li>Converted IIM Bodh Gaya, IIM Sirmaur and IIM Jammu</li>
+<li>Converted IMT Ghaziabad, Hyderabad and Nagpur</li>
+</ul>
+</section>
 
-      <div class="timeline-item highlight">
-        <div class="timeline-dot"></div>
-        <p class="timeline-year">Present</p>
-        <h3 class="timeline-heading">MBA-BM at XIMB</h3>
-        <p class="timeline-sub">Xavier Institute of Management, Bhubaneswar — Developing expertise in business management, finance, and strategic leadership at one of India's top-ranked business schools.</p>
-        <div class="timeline-tags">
-          <span class="tag">Finance</span>
-          <span class="tag">Strategy</span>
-          <span class="tag">Leadership</span>
-        </div>
-      </div>
+<section>
+<h2>My Vision</h2>
+<p>I aspire to combine strong business knowledge, analytical thinking, and leadership skills to create meaningful impact in the corporate world. My long-term goal is to establish a successful career in finance and strategic management.</p>
+</section>
 
-    </div>
-  </div>
-</div>
-
-<!-- SKILLS -->
-<div id="skills">
-  <div class="section">
-    <p class="section-label">Skills & Competencies</p>
-    <h2 class="section-title">Tools of the trade.</h2>
-    <div class="skills-grid">
-      <div class="skill-block">
-        <div class="skill-icon">📊</div>
-        <div class="skill-name">Business & Financial Analysis</div>
-        <div class="skill-desc">Evaluating financial data and business contexts to drive informed decisions.</div>
-      </div>
-      <div class="skill-block">
-        <div class="skill-icon">📐</div>
-        <div class="skill-name">Analytical Thinking</div>
-        <div class="skill-desc">Structured approach to complex problems, shaped by a scientific background.</div>
-      </div>
-      <div class="skill-block">
-        <div class="skill-icon">📈</div>
-        <div class="skill-name">Microsoft Excel</div>
-        <div class="skill-desc">Proficient in data modelling, dashboards, and financial spreadsheet work.</div>
-      </div>
-      <div class="skill-block">
-        <div class="skill-icon">🔷</div>
-        <div class="skill-name">Power BI (Learning)</div>
-        <div class="skill-desc">Actively building proficiency in data visualisation and business intelligence.</div>
-      </div>
-      <div class="skill-block">
-        <div class="skill-icon">🤝</div>
-        <div class="skill-name">Communication & Teamwork</div>
-        <div class="skill-desc">Clear articulation and collaborative execution across diverse teams.</div>
-      </div>
-      <div class="skill-block">
-        <div class="skill-icon">🎯</div>
-        <div class="skill-name">Leadership Potential</div>
-        <div class="skill-desc">Goal-oriented mindset with a drive to lead projects and inspire outcomes.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- HOBBIES -->
-<div style="background: var(--white);">
-  <div class="section" style="padding-top: 60px; padding-bottom: 60px;">
-    <p class="section-label">Beyond the Books</p>
-    <div class="hobbies-row">
-      <div class="hobby-pill"><span>🎮</span> Valorant</div>
-      <div class="hobby-pill"><span>🏸</span> Badminton</div>
-      <div class="hobby-pill"><span>🏍️</span> Biking & Exploration</div>
-      <div class="hobby-pill"><span>📰</span> Business & Finance Trends</div>
-    </div>
-  </div>
-</div>
-
-<!-- VISION -->
-<div class="vision-section" id="vision">
-  <div class="section">
-    <p class="section-label" style="color: var(--gold);">My Vision</p>
-    <h2 class="section-title">Where I'm headed.</h2>
-    <blockquote class="vision-quote">
-      "I aspire to combine strong business knowledge, analytical thinking, and leadership skills to create meaningful impact in the corporate world — building a career at the forefront of finance and strategic management."
-    </blockquote>
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <span class="footer-name">Aniket Ghosh</span>
-  <span class="footer-note">MBA-BM · XIMB · Bhubaneswar &nbsp;·&nbsp; © 2026</span>
+<p>© 2026 Aniket Ghosh | Personal Portfolio</p>
 </footer>
 
 </body>
